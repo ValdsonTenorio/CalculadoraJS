@@ -15,46 +15,30 @@ function calcular(){
         document.getElementById('resultado').innerHTML = eval(resultado);
     }
 }
+const buttontype = {
+    "Backspace": (ctrl, shift , alt) => {
+        ctrl ? clean() : back()},
+    "1" : () => insert(1),
+    "2" : () => insert(2),
+    "3" : () => insert(3),
+    "4" : () => insert(4),
+    "5" : () => insert(5),
+    "6" : () => insert(6),
+    "7" : () => insert(7),
+    "8" : () => insert(8),
+    "9" : () => insert(9),
+    "0" : () => insert(0),
+    "-" : () => insert('-'),
+    "+" : () => insert('+'),
+    "/" : () => insert('/'),
+    "*" : () => insert('*'),
+    "=" : () => calcular('='),
+    "." : () => insert('.'),
+};
+
+
 
 document.addEventListener('keydown', function(tecla){
-
-    switch(tecla.keyCode){
-        case 8: clean();
-        break;
-        case 49: insert(1);
-        break;
-        case 50: insert(2);
-        break;
-        case 51: insert(3);
-        break;
-        case 52: insert(4);
-        break;
-        case 53: insert(5);
-        break;
-        case 54: insert(6);
-        break;
-        case 55: insert(7);
-        break;
-        case 56: insert(8);
-        break;
-        case 57: insert(9);
-        break;
-        case 48: insert(0);
-        break;
-        case 189 || 109: insert('-');
-        break;
-        case 107: insert('+');
-        break;
-        case 193 || 111: insert('/');
-        break;
-        case 56: insert('*');
-        break;
-        case 190: insert('.');
-        break;
-        case 187: calcular();
-        break;
-
-
-    }
+    buttontype[`${tecla.key}`](tecla.ctrl, tecla.shift, tecla.alt);
 
 })
